@@ -2,7 +2,7 @@
 
 # 🧠 SZYX AI
 
-**一款支持云端+本地双模式的 AI 角色扮演聊天应用**
+**一款支持多种云端 AI 模型的角色扮演聊天应用**
 
 ![Android](https://img.shields.io/badge/Android-8.0%2B-green?style=flat-square&logo=android)
 ![Java](https://img.shields.io/badge/Java-11-orange?style=flat-square&logo=openjdk)
@@ -20,7 +20,7 @@
 
 | 功能 | 说明 |
 |:---:|:---|
-| 🤖 **多模型切换** | 支持小米 mimo-v2.5 云端模型和本地 GGUF 模型，随时切换不丢失对话 |
+| 🤖 **多模型支持** | 支持小米 mimo、DeepSeek、自定义 API 等多种云端 AI 模型 |
 | 🎭 **角色卡系统** | 自由创建角色人设、世界观、输出风格，兼容 SillyTavern 格式 |
 | 🧠 **双记忆体系** | 短期记忆（最近 N 轮）+ 长期记忆（自动提取关键剧情） |
 | 📚 **世界书知识库** | 关键词触发的世界观设定注入，宏大世界观也能高效使用 |
@@ -39,7 +39,7 @@
 
 1. 从 [Releases](https://github.com/2919671430/szyx/releases) 下载最新 APK
 2. 安装并打开应用
-3. 配置 API Key 或本地模型路径
+3. 在设置中配置 API Key
 
 ### 从源码构建
 
@@ -56,19 +56,15 @@ cd szyx
 
 ## 📱 功能详解
 
-### 🤖 双模式推理引擎
+### 🤖 多模型支持
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    SZYX AI 推理引擎                       │
-├─────────────────────┬───────────────────────────────────┤
-│   ☁️ 云端模式        │        💻 本地模式                  │
-│   小米 mimo-v2.5    │   Gemma 4 E4B IT (GGUF)          │
-│   • 低延迟          │   • 隐私安全                        │
-│   • 高质量回复      │   • 离线可用                        │
-│   • 流式输出        │   • 自定义模型                      │
-└─────────────────────┴───────────────────────────────────┘
-```
+支持多种云端 AI 服务，随时切换不丢失对话：
+
+| 服务 | 模型 | 特点 |
+|:---:|:---:|:---|
+| **小米 mimo** | mimo-v2.5 | 低延迟、高质量回复 |
+| **DeepSeek** | DeepSeek Chat | 强大的中文理解能力 |
+| **自定义 API** | 兼容 OpenAI 格式 | 灵活接入各种服务 |
 
 ### 🧠 智能记忆系统
 
@@ -117,7 +113,9 @@ szyx/
 │   ├── src/main/java/com/szyx/ai/
 │   │   ├── engine/              # 推理引擎
 │   │   │   ├── api/             # 云端 API 实现
-│   │   │   ├── llm/             # 本地 LLM 接口
+│   │   │   │   ├── XiaomiApiEngine.java
+│   │   │   │   ├── DeepSeekApiEngine.java
+│   │   │   │   └── CustomApiEngine.java
 │   │   │   ├── memory/          # 记忆管理
 │   │   │   ├── prompt/          # Prompt 构建
 │   │   │   └── numerical/       # 数值系统
@@ -130,7 +128,6 @@ szyx/
 │   │   │   └── settings/        # 设置页面
 │   │   └── viewmodel/           # ViewModel
 │   └── schemas/                 # 数据库 Schema
-├── llama.cpp/                   # 本地推理引擎
 └── 使用手册.md                   # 详细使用文档
 ```
 
@@ -150,7 +147,6 @@ szyx/
 
 ## 🙏 致谢
 
-- [llama.cpp](https://github.com/ggerganov/llama.cpp) - 本地推理引擎
 - [Material Design 3](https://m3.material.io/) - UI 设计规范
 - [SillyTavern](https://github.com/SillyTavern/SillyTavern) - 角色卡格式参考
 
