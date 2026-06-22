@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:colorBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Avatar -->
+        <ImageView
+            android:id="@+id/avatarPreview"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:scaleType="centerCrop"
+            android:background="@color/surface_variant"
+            android:src="@android:drawable/sym_def_app_icon" />
+
+        <Button
+            android:id="@+id/btnPickAvatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:text="@string/choose_avatar"
+            style="@style/Widget.Material3.Button.TonalButton" />
+
+        <!-- Template Button -->
+        <Button
+            android:id="@+id/btnTemplate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="一键套用模板"
+            style="@style/Widget.Material3.Button.OutlinedButton" />
+
+        <!-- Name -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="@string/character_name"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Personality -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="@string/personality"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editPersonality"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- System Prompt -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="@string/system_prompt"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editSystemPrompt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minLines="4"
+                android:gravity="top"
+                android:inputType="textMultiLine" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- World Setting (free text) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="世界观设定 (自由填写)"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editWorldSetting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minLines="4"
+                android:gravity="top"
+                android:inputType="textMultiLine" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Description -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="@string/description"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minLines="3"
+                android:gravity="top"
+                android:inputType="textMultiLine" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- First Message -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="@string/first_message"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editFirstMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minLines="2"
+                android:gravity="top"
+                android:inputType="textMultiLine" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Output Style -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="输出风格偏好 (可选)"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editOutputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Supreme Directive -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="最高准则 (每轮对话前强制执行)"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editSupremeDirective"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minLines="3"
+                android:gravity="top"
+                android:inputType="textMultiLine" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Constraint Level -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="约束强度"
+            android:textColor="?colorOnSurfaceVariant"
+            android:layout_marginBottom="4dp" />
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sliderConstraint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:valueFrom="0"
+            android:valueTo="2"
+            android:stepSize="1"
+            android:value="1"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/textConstraint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="标准"
+            android:textColor="?colorOnSurface"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Tags -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="@string/tags"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Feature Toggles -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="功能开关"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="?colorOnSurface"
+            android:layout_marginBottom="8dp" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchLTM"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="长期记忆 (LTM)"
+            android:textColor="?colorOnSurface"
+            android:checked="true"
+            android:layout_marginBottom="4dp" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchWorldBook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="世界书知识库"
+            android:textColor="?colorOnSurface"
+            android:checked="true"
+            android:layout_marginBottom="4dp" />
+
+        <!-- World Book Entries Management -->
+        <LinearLayout
+            android:id="@+id/worldBookSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="8dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="世界书条目"
+                android:textSize="14sp"
+                android:textColor="?colorOnSurfaceVariant"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/textWorldBookHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="格式：关键词1,关键词2 | 注入内容"
+                android:textSize="12sp"
+                android:textColor="?colorOnSurfaceVariant"
+                android:layout_marginBottom="4dp" />
+
+            <EditText
+                android:id="@+id/editWorldBookInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="输入关键词 | 内容"
+                android:minLines="2"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:textSize="13sp"
+                android:layout_marginBottom="4dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <EditText
+                    android:id="@+id/editWorldBookPriority"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="优先级(1-10)"
+                    android:inputType="number"
+                    android:textSize="13sp"
+                    android:text="5" />
+
+                <Button
+                    android:id="@+id/btnAddWorldBook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="添加"
+                    android:layout_marginStart="8dp"
+                    style="@style/Widget.Material3.Button.TonalButton" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textWorldBookCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已有条目：0"
+                android:textSize="12sp"
+                android:textColor="?colorOnSurfaceVariant"
+                android:layout_marginBottom="4dp" />
+
+            <Button
+                android:id="@+id/btnManageWorldBook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="查看/编辑所有条目"
+                style="@style/Widget.Material3.Button.OutlinedButton" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
+
+                <Button
+                    android:id="@+id/btnExportWorldBook"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:text="导出世界书"
+                    style="@style/Widget.Material3.Button.TonalButton" />
+
+                <Button
+                    android:id="@+id/btnImportWorldBook"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:text="导入世界书"
+                    style="@style/Widget.Material3.Button.TonalButton" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchNumerical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="养成数值系统"
+            android:textColor="?colorOnSurface"
+            android:checked="false"
+            android:layout_marginBottom="8dp" />
+
+        <!-- STM Rounds -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="短期记忆轮数"
+            android:textColor="?colorOnSurfaceVariant"
+            android:layout_marginBottom="4dp" />
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sliderSTMRounds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:valueFrom="5"
+            android:valueTo="100"
+            android:stepSize="5"
+            android:value="20"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/textSTMRounds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20 轮"
+            android:textColor="?colorOnSurface"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Import/Export -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <Button
+                android:id="@+id/btnImport"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="@string/import_json"
+                style="@style/Widget.Material3.Button.OutlinedButton" />
+
+            <Button
+                android:id="@+id/btnExport"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="@string/export_json"
+                style="@style/Widget.Material3.Button.OutlinedButton" />
+        </LinearLayout>
+
+        <!-- Save -->
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            style="@style/Widget.Material3.Button" />
+
+    </LinearLayout>
+</ScrollView>

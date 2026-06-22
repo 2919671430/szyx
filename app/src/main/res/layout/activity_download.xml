@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:colorBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SZYX AI"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="?colorOnSurface"
+            android:layout_marginTop="80dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="离线 AI 聊天"
+            android:textSize="16sp"
+            android:textColor="?colorOnSurfaceVariant"
+            android:layout_marginTop="8dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?colorOutlineVariant"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="模型设置"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="?colorOnSurface" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="请输入设备上 GGUF 模型文件的完整路径"
+            android:textSize="14sp"
+            android:textColor="?colorOnSurfaceVariant"
+            android:layout_marginTop="8dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="模型文件路径"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_marginTop="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etModelPath"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="示例：/storage/emulated/0/下载/Download/model.gguf"
+            android:textSize="12sp"
+            android:textColor="?colorOnSurfaceVariant"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/btnPermission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="授予存储权限"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/btnConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="确认"
+            style="@style/Widget.Material3.Button"
+            android:layout_marginTop="32dp" />
+
+        <Button
+            android:id="@+id/btnSkip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="跳过"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+</ScrollView>

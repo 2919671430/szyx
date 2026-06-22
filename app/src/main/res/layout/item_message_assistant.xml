@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingStart="8dp"
+    android:paddingEnd="48dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:gravity="top">
+
+    <ImageView
+        android:id="@+id/avatarImage"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:scaleType="centerCrop"
+        android:background="@color/surface_variant"
+        android:src="@android:drawable/sym_def_app_icon"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="4dp" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/bubble_assistant"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp">
+
+        <TextView
+            android:id="@+id/messageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:textColor="@color/bubble_text_assistant"
+            android:textSize="14sp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

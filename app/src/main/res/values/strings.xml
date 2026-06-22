@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SZYX AI</string>
+    <string name="characters">角色列表</string>
+    <string name="new_character">新建角色</string>
+    <string name="edit_character">编辑角色</string>
+    <string name="save_slots">存档槽</string>
+    <string name="new_save_slot">新建存档</string>
+    <string name="settings">设置</string>
+    <string name="chat">聊天</string>
+    <string name="send">发送</string>
+    <string name="type_message">输入消息...</string>
+    <string name="model_not_found">未找到模型文件，请将模型文件放置在设备上。</string>
+    <string name="character_name">角色名称</string>
+    <string name="system_prompt">系统提示词（角色人设）</string>
+    <string name="personality">性格特征（逗号分隔）</string>
+    <string name="description">角色简介</string>
+    <string name="first_message">开场白</string>
+    <string name="tags">标签（逗号分隔）</string>
+    <string name="save">保存</string>
+    <string name="delete">删除</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确认</string>
+    <string name="import_json">导入 JSON</string>
+    <string name="export_json">导出 JSON</string>
+    <string name="session_name">存档名称</string>
+    <string name="rename">重命名</string>
+    <string name="duplicate">复制</string>
+    <string name="no_characters">暂无角色，点击 + 创建一个。</string>
+    <string name="no_sessions">暂无存档，点击 + 创建一个。</string>
+    <string name="no_messages">开始聊天吧！</string>
+    <string name="loading_model">正在加载模型...</string>
+    <string name="generating">正在生成...</string>
+    <string name="model_path_llm">模型路径</string>
+    <string name="context_size">上下文大小</string>
+    <string name="threads">CPU 线程数</string>
+    <string name="temperature">温度</string>
+    <string name="choose_avatar">选择头像</string>
+    <string name="delete_character_confirm">确定要删除该角色及其所有存档吗？</string>
+    <string name="delete_session_confirm">确定要删除该存档吗？</string>
+</resources>

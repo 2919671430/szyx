@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:colorBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="云端模型"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="?colorOnSurface"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Xiaomi API Toggle -->
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchXiaomiApi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="启用小米模型 API (mimo-v2.5)"
+            android:textColor="?colorOnSurface"
+            android:layout_marginBottom="8dp" />
+
+        <!-- API Key -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="API Key"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editApiKey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textApiStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="关闭：未启用"
+            android:textColor="?colorOnSurfaceVariant"
+            android:textSize="12sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- DeepSeek API Toggle -->
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchDeepSeekApi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="启用 DeepSeek API (V4 Flash)"
+            android:textColor="?colorOnSurface"
+            android:layout_marginBottom="8dp" />
+
+        <!-- DeepSeek API Key -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="DeepSeek API Key"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editDeepSeekApiKey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textDeepSeekApiStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="关闭：未启用 DeepSeek"
+            android:textColor="?colorOnSurfaceVariant"
+            android:textSize="12sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Custom API Toggle -->
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchCustomApi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="启用自定义模型 API (OpenAI 兼容)"
+            android:textColor="?colorOnSurface"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Custom API URL -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="API 地址 (如 https://api.example.com)"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editCustomApiUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textUri" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Custom Model Name -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="模型名称 (如 gpt-4o)"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editCustomModelName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Custom API Key -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="API Key"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editCustomApiKey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textCustomApiStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="关闭：未启用自定义模型"
+            android:textColor="?colorOnSurfaceVariant"
+            android:textSize="12sp"
+            android:layout_marginBottom="16dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="推理设置"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="?colorOnSurface"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上下文大小和 CPU 线程数仅对本地模型生效"
+            android:textColor="?colorOnSurfaceVariant"
+            android:textSize="12sp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Context Size -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上下文大小"
+            android:textColor="?colorOnSurfaceVariant"
+            android:layout_marginBottom="4dp" />
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sliderCtxSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:valueFrom="512"
+            android:valueTo="8192"
+            android:stepSize="512"
+            android:value="4096"
+            android:layout_marginBottom="8dp" />
+        <TextView
+            android:id="@+id/textCtxSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4096"
+            android:textColor="?colorOnSurface"
+            android:layout_marginBottom="16dp" />
+
+        <!-- CPU Threads -->
+        <TextView
+            android:id="@+id/textCpuInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CPU 线程数"
+            android:textColor="?colorOnSurfaceVariant"
+            android:layout_marginBottom="4dp" />
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sliderThreads"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:valueFrom="1"
+            android:valueTo="16"
+            android:stepSize="1"
+            android:value="4"
+            android:layout_marginBottom="8dp" />
+        <TextView
+            android:id="@+id/textThreads"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:textColor="?colorOnSurface"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Temperature -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="温度"
+            android:textColor="?colorOnSurfaceVariant"
+            android:layout_marginBottom="4dp" />
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sliderTemperature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:valueFrom="0.0"
+            android:valueTo="2.0"
+            android:stepSize="0.1"
+            android:value="0.7"
+            android:layout_marginBottom="8dp" />
+        <TextView
+            android:id="@+id/textTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.7"
+            android:textColor="?colorOnSurface"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Save -->
+        <Button
+            android:id="@+id/btnSaveSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="保存设置"
+            style="@style/Widget.Material3.Button" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/textDeviceInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?colorOnSurfaceVariant"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SZYX AI v1.0.0\n云端 AI 聊天"
+            android:textColor="?colorOnSurfaceVariant"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+</ScrollView>

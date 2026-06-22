@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#FF6750A4</color>
+    <color name="primary_variant">#FF7F67BE</color>
+    <color name="on_primary">#FFFFFFFF</color>
+    <color name="secondary">#FF625B71</color>
+    <color name="on_secondary">#FFFFFFFF</color>
+    <color name="background">#FF1C1B1F</color>
+    <color name="surface">#FF1C1B1F</color>
+    <color name="surface_variant">#FF49454F</color>
+    <color name="on_surface">#FFE6E1E5</color>
+    <color name="on_surface_variant">#FFCAC4D0</color>
+    <color name="error">#FFF2B8B5</color>
+
+    <!-- Chat bubble colors -->
+    <color name="bubble_user">#FF6750A4</color>
+    <color name="bubble_assistant">#FF2B2930</color>
+    <color name="bubble_summary">#FF383440</color>
+    <color name="bubble_text_user">#FFFFFFFF</color>
+    <color name="bubble_text_assistant">#FFE6E1E5</color>
+    <color name="bubble_text_summary">#FFCAC4D0</color>
+
+    <color name="divider">#FF49454F</color>
+    <color name="card_background">#FF2B2930</color>
+</resources>
