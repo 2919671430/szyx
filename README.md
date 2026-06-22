@@ -10,6 +10,12 @@
 ![Version](https://img.shields.io/badge/Version-1.0.0-purple?style=flat-square)
 ![Stars](https://img.shields.io/github/stars/2919671430/szyx?style=flat-square)
 
+### 📥 直接下载
+
+[![Download APK](https://img.shields.io/badge/📥_下载_APP-SZYX--AI--v1.0.0.apk-blue?style=for-the-badge&logo=android)](https://github.com/2919671430/szyx/raw/master/SZYX-AI-v1.0.0.apk)
+
+> 💡 直接下载安装即可使用，无需编译
+
 [English](#english) | 中文
 
 </div>
@@ -37,11 +43,11 @@
 
 ### 安装方式
 
-1. 从 [Releases](https://github.com/2919671430/szyx/releases) 下载最新 APK
-2. 安装并打开应用
-3. 在设置中配置 API Key
+**方式一：直接下载（推荐）**
 
-### 从源码构建
+点击上方下载按钮，或直接下载 [SZYX-AI-v1.0.0.apk](https://github.com/2919671430/szyx/raw/master/SZYX-AI-v1.0.0.apk)，安装后在设置中配置 API Key 即可使用。
+
+**方式二：从源码构建**
 
 ```bash
 # 克隆项目
