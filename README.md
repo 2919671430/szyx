@@ -7,12 +7,12 @@
 ![Android](https://img.shields.io/badge/Android-8.0%2B-green?style=flat-square&logo=android)
 ![Java](https://img.shields.io/badge/Java-11-orange?style=flat-square&logo=openjdk)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
-![Version](https://img.shields.io/badge/Version-1.0.0-purple?style=flat-square)
+![Version](https://img.shields.io/badge/Version-2.0.0-purple?style=flat-square)
 ![Stars](https://img.shields.io/github/stars/2919671430/szyx?style=flat-square)
 
 ### 📥 直接下载
 
-[![Download APK](https://img.shields.io/badge/📥_下载_APP-SZYX--AI--v1.0.0.apk-blue?style=for-the-badge&logo=android)](https://github.com/2919671430/szyx/raw/master/SZYX-AI-v1.0.0.apk)
+[![Download APK](https://img.shields.io/badge/📥_下载_APP-SZYX--AI--v2.0.0.apk-blue?style=for-the-badge&logo=android)](https://github.com/2919671430/szyx/raw/master/SZYX-AI-v2.0.0.apk)
 
 > 💡 直接下载安装即可使用，无需编译
 
@@ -31,7 +31,8 @@
 | 🧠 **双记忆体系** | 短期记忆（最近 N 轮）+ 长期记忆（自动提取关键剧情） |
 | 📚 **世界书知识库** | 关键词触发的世界观设定注入，宏大世界观也能高效使用 |
 | 📊 **养成数值系统** | AI 自动解析数值变化，支持好感度、RPG 属性等 |
-| 🎨 **模板一键套用** | 5 套预设模板，新手秒出作品 |
+| 🎨 **模板一键套用** | 5 套预设模板，自带结构化状态面板和选项格式 |
+| 🔀 **强制选项生成** | AI 回复末尾自动生成可点击的剧情选项按钮，支持按角色开关 |
 
 ## 🚀 快速开始
 
@@ -45,7 +46,7 @@
 
 **方式一：直接下载（推荐）**
 
-点击上方下载按钮，或直接下载 [SZYX-AI-v1.0.0.apk](https://github.com/2919671430/szyx/raw/master/SZYX-AI-v1.0.0.apk)，安装后在设置中配置 API Key 即可使用。
+点击上方下载按钮，或直接下载 [SZYX-AI-v2.0.0.apk](https://github.com/2919671430/szyx/raw/master/SZYX-AI-v2.0.0.apk)，安装后在设置中配置 API Key 即可使用。
 
 **方式二：从源码构建**
 
