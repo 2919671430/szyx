@@ -4,16 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:colorBackground">
+    android:background="#FF000000">
 
-    <!-- Character info bar -->
     <LinearLayout
         android:id="@+id/characterBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:background="?colorSurfaceVariant"
+        android:background="@drawable/bg_character_bar"
         android:gravity="center_vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,11 +20,11 @@
 
         <ImageView
             android:id="@+id/avatarImageView"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:scaleType="centerCrop"
-            android:background="@color/surface_variant"
-            android:src="@android:drawable/sym_def_app_icon" />
+            android:background="@drawable/bg_avatar_ring"
+            android:src="@drawable/ic_default_avatar" />
 
         <TextView
             android:id="@+id/characterNameText"
@@ -35,7 +34,7 @@
             android:layout_marginStart="8dp"
             android:textSize="15sp"
             android:textStyle="bold"
-            android:textColor="?colorOnSurface" />
+            android:textColor="@color/neon_cyan" />
 
         <TextView
             android:id="@+id/textModelIndicator"
@@ -43,15 +42,14 @@
             android:layout_height="wrap_content"
             android:text="--"
             android:textSize="11sp"
-            android:textColor="?colorOnSurfaceVariant"
-            android:background="?colorSurfaceVariant"
+            android:textColor="@color/neon_purple"
+            android:background="@drawable/bg_glass_card"
             android:paddingHorizontal="6dp"
             android:paddingVertical="2dp"
             android:layout_marginEnd="4dp" />
 
     </LinearLayout>
 
-    <!-- Numerical values bar (hidden when empty) -->
     <TextView
         android:id="@+id/textNumericalValues"
         android:layout_width="0dp"
@@ -59,15 +57,14 @@
         android:visibility="gone"
         android:padding="6dp"
         android:textSize="12sp"
-        android:textColor="?colorOnSurfaceVariant"
-        android:background="?colorSurfaceVariant"
+        android:textColor="@color/neon_cyan"
+        android:background="@color/surface_variant"
         android:singleLine="true"
         android:ellipsize="end"
         app:layout_constraintTop_toBottomOf="@id/characterBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Messages -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/messagesRecyclerView"
         android:layout_width="0dp"
@@ -79,7 +76,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Typing indicator -->
     <LinearLayout
         android:id="@+id/typingIndicator"
         android:layout_width="wrap_content"
@@ -95,33 +91,33 @@
         <ProgressBar
             android:layout_width="20dp"
             android:layout_height="20dp"
-            style="?android:attr/progressBarStyleSmall" />
+            style="?android:attr/progressBarStyleSmall"
+            android:indeterminateTint="@color/neon_cyan" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@string/generating"
-            android:textColor="?colorOnSurfaceVariant"
+            android:textColor="@color/neon_cyan"
             android:textSize="13sp" />
 
     </LinearLayout>
 
-    <!-- Input bar -->
     <LinearLayout
         android:id="@+id/inputBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:background="?colorSurface"
+        android:background="@drawable/bg_input_bar"
         android:elevation="4dp"
         android:gravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/messageInput"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -130,16 +126,22 @@
             android:maxLines="4"
             android:inputType="textMultiLine"
             android:textSize="14sp"
-            android:background="@android:color/transparent" />
+            android:textColor="@color/on_surface"
+            android:textColorHint="@color/on_surface_variant"
+            android:background="@drawable/bg_input_neon"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/btnSend"
             android:layout_width="44dp"
             android:layout_height="44dp"
-            android:src="@android:drawable/ic_menu_send"
+            android:src="@drawable/ic_send_cyber"
             android:contentDescription="@string/send"
-            android:background="?selectableItemBackgroundBorderless"
-            android:layout_marginStart="4dp" />
+            android:background="@drawable/bg_send_button"
+            android:padding="10dp"
+            android:layout_marginStart="8dp"
+            android:scaleType="centerInside" />
 
     </LinearLayout>
 

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:colorBackground">
+    android:background="@drawable/bg_cyber_gradient">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,27 +13,37 @@
         android:padding="24dp"
         android:gravity="center_horizontal">
 
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_splash_logo"
+            android:scaleType="fitCenter"
+            android:contentDescription="@null" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SZYX AI"
             android:textSize="32sp"
             android:textStyle="bold"
-            android:textColor="?colorOnSurface"
-            android:layout_marginTop="80dp" />
+            android:textColor="@color/neon_cyan"
+            android:layout_marginTop="8dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="离线 AI 聊天"
             android:textSize="16sp"
-            android:textColor="?colorOnSurfaceVariant"
+            android:textColor="@color/neon_purple"
             android:layout_marginTop="8dp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="?colorOutlineVariant"
+            android:background="@color/divider"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="24dp" />
 
@@ -42,14 +53,14 @@
             android:text="模型设置"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="?colorOnSurface" />
+            android:textColor="@color/neon_cyan" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="请输入设备上 GGUF 模型文件的完整路径"
             android:textSize="14sp"
-            android:textColor="?colorOnSurfaceVariant"
+            android:textColor="@color/on_surface_variant"
             android:layout_marginTop="8dp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -74,7 +85,7 @@
             android:layout_height="wrap_content"
             android:text="示例：/storage/emulated/0/下载/Download/model.gguf"
             android:textSize="12sp"
-            android:textColor="?colorOnSurfaceVariant"
+            android:textColor="@color/on_surface_variant"
             android:layout_marginTop="8dp" />
 
         <Button
@@ -82,6 +93,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="授予存储权限"
+            android:textColor="@color/neon_cyan"
+            app:strokeColor="@color/neon_cyan"
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_marginTop="16dp" />
 
@@ -90,6 +103,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="确认"
+            android:backgroundTint="@color/neon_purple"
+            android:textColor="@color/on_primary"
             style="@style/Widget.Material3.Button"
             android:layout_marginTop="32dp" />
 
@@ -98,6 +113,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="跳过"
+            android:textColor="@color/neon_cyan"
             style="@style/Widget.Material3.Button.TextButton"
             android:layout_marginTop="8dp" />
 

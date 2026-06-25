@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:colorBackground">
+    android:background="@drawable/bg_cyber_gradient">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,7 +12,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Avatar -->
         <ImageView
             android:id="@+id/avatarPreview"
             android:layout_width="96dp"
@@ -19,8 +19,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
-            android:background="@color/surface_variant"
-            android:src="@android:drawable/sym_def_app_icon" />
+            android:background="@drawable/bg_avatar_ring"
+            android:src="@drawable/ic_default_avatar" />
 
         <Button
             android:id="@+id/btnPickAvatar"
@@ -29,18 +29,19 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
             android:text="@string/choose_avatar"
+            android:textColor="@color/neon_cyan"
             style="@style/Widget.Material3.Button.TonalButton" />
 
-        <!-- Template Button -->
         <Button
             android:id="@+id/btnTemplate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="一键套用模板"
+            android:textColor="@color/neon_cyan"
+            app:strokeColor="@color/neon_cyan"
             style="@style/Widget.Material3.Button.OutlinedButton" />
 
-        <!-- Name -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,7 +55,6 @@
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Personality -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,7 +68,6 @@
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- System Prompt -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -85,7 +84,6 @@
                 android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- World Setting (free text) -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -102,7 +100,6 @@
                 android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Description -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -119,7 +116,6 @@
                 android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- First Message -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -136,7 +132,6 @@
                 android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Output Style -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -151,7 +146,6 @@
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Supreme Directive -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -168,12 +162,11 @@
                 android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Constraint Level -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="约束强度"
-            android:textColor="?colorOnSurfaceVariant"
+            android:textColor="@color/on_surface_variant"
             android:layout_marginBottom="4dp" />
         <com.google.android.material.slider.Slider
             android:id="@+id/sliderConstraint"
@@ -189,10 +182,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="标准"
-            android:textColor="?colorOnSurface"
+            android:textColor="@color/on_surface"
             android:layout_marginBottom="16dp" />
 
-        <!-- Tags -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -206,14 +198,13 @@
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Feature Toggles -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="功能开关"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="?colorOnSurface"
+            android:textColor="@color/neon_cyan"
             android:layout_marginBottom="8dp" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
@@ -221,7 +212,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="长期记忆 (LTM)"
-            android:textColor="?colorOnSurface"
+            android:textColor="@color/on_surface"
             android:checked="true"
             android:layout_marginBottom="4dp" />
 
@@ -230,11 +221,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="世界书知识库"
-            android:textColor="?colorOnSurface"
+            android:textColor="@color/on_surface"
             android:checked="true"
             android:layout_marginBottom="4dp" />
 
-        <!-- World Book Entries Management -->
         <LinearLayout
             android:id="@+id/worldBookSection"
             android:layout_width="match_parent"
@@ -249,7 +239,7 @@
                 android:layout_height="wrap_content"
                 android:text="世界书条目"
                 android:textSize="14sp"
-                android:textColor="?colorOnSurfaceVariant"
+                android:textColor="@color/on_surface_variant"
                 android:layout_marginBottom="4dp" />
 
             <TextView
@@ -258,7 +248,7 @@
                 android:layout_height="wrap_content"
                 android:text="格式：关键词1,关键词2 | 注入内容"
                 android:textSize="12sp"
-                android:textColor="?colorOnSurfaceVariant"
+                android:textColor="@color/on_surface_variant"
                 android:layout_marginBottom="4dp" />
 
             <EditText
@@ -270,6 +260,7 @@
                 android:gravity="top"
                 android:inputType="textMultiLine"
                 android:textSize="13sp"
+                android:textColor="@color/on_surface"
                 android:layout_marginBottom="4dp" />
 
             <LinearLayout
@@ -286,6 +277,7 @@
                     android:hint="优先级(1-10)"
                     android:inputType="number"
                     android:textSize="13sp"
+                    android:textColor="@color/on_surface"
                     android:text="5" />
 
                 <Button
@@ -294,6 +286,7 @@
                     android:layout_height="wrap_content"
                     android:text="添加"
                     android:layout_marginStart="8dp"
+                    android:textColor="@color/neon_cyan"
                     style="@style/Widget.Material3.Button.TonalButton" />
             </LinearLayout>
 
@@ -303,7 +296,7 @@
                 android:layout_height="wrap_content"
                 android:text="已有条目：0"
                 android:textSize="12sp"
-                android:textColor="?colorOnSurfaceVariant"
+                android:textColor="@color/on_surface_variant"
                 android:layout_marginBottom="4dp" />
 
             <Button
@@ -311,6 +304,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="查看/编辑所有条目"
+                android:textColor="@color/neon_cyan"
                 style="@style/Widget.Material3.Button.OutlinedButton" />
 
             <LinearLayout
@@ -326,6 +320,7 @@
                     android:layout_weight="1"
                     android:layout_marginEnd="4dp"
                     android:text="导出世界书"
+                    android:textColor="@color/neon_cyan"
                     style="@style/Widget.Material3.Button.TonalButton" />
 
                 <Button
@@ -335,25 +330,34 @@
                     android:layout_weight="1"
                     android:layout_marginStart="4dp"
                     android:text="导入世界书"
+                    android:textColor="@color/neon_cyan"
                     style="@style/Widget.Material3.Button.TonalButton" />
             </LinearLayout>
         </LinearLayout>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchForceOptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="强制生成选项"
+            android:textColor="@color/on_surface"
+            android:checked="true"
+            android:layout_marginBottom="4dp" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switchNumerical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="养成数值系统"
-            android:textColor="?colorOnSurface"
+            android:textColor="@color/on_surface"
             android:checked="false"
             android:layout_marginBottom="8dp" />
 
-        <!-- STM Rounds -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="短期记忆轮数"
-            android:textColor="?colorOnSurfaceVariant"
+            android:textColor="@color/on_surface_variant"
             android:layout_marginBottom="4dp" />
         <com.google.android.material.slider.Slider
             android:id="@+id/sliderSTMRounds"
@@ -369,10 +373,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="20 轮"
-            android:textColor="?colorOnSurface"
+            android:textColor="@color/on_surface"
             android:layout_marginBottom="16dp" />
 
-        <!-- Import/Export -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -386,6 +389,7 @@
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
                 android:text="@string/import_json"
+                android:textColor="@color/neon_cyan"
                 style="@style/Widget.Material3.Button.OutlinedButton" />
 
             <Button
@@ -395,15 +399,17 @@
                 android:layout_weight="1"
                 android:layout_marginStart="8dp"
                 android:text="@string/export_json"
+                android:textColor="@color/neon_cyan"
                 style="@style/Widget.Material3.Button.OutlinedButton" />
         </LinearLayout>
 
-        <!-- Save -->
         <Button
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/save"
+            android:backgroundTint="@color/neon_purple"
+            android:textColor="@color/on_primary"
             style="@style/Widget.Material3.Button" />
 
     </LinearLayout>

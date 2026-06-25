@@ -2,6 +2,9 @@ package com.szyx.ai.ui.character;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -9,7 +12,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -45,7 +50,6 @@ public class CharacterListFragment extends Fragment {
 
         adapter = new CharacterAdapter(
             character -> {
-                // 进入会话列表
                 SessionListFragment fragment = new SessionListFragment();
                 Bundle args = new Bundle();
                 args.putLong("characterId", character.id);
@@ -85,29 +89,28 @@ public class CharacterListFragment extends Fragment {
             ((MainActivity) requireActivity()).navigateTo(new CharacterEditFragment());
         });
 
-        // 设置按钮
-        View btnSettings = view.findViewById(R.id.btnSettings);
-        if (btnSettings != null) {
-            btnSettings.setOnClickListener(v -> {
-                ((MainActivity) requireActivity()).navigateTo(new com.szyx.ai.ui.settings.SettingsFragment());
-            });
-        }
+        requireActivity().addMenuProvider(new MenuProvider() {
+            @Override
+            public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
+                menuInflater.inflate(R.menu.menu_main, menu);
+            }
 
-        // 日志按钮
-        View btnLog = view.findViewById(R.id.btnLog);
-        if (btnLog != null) {
-            btnLog.setOnClickListener(v -> {
-                ((MainActivity) requireActivity()).navigateTo(new com.szyx.ai.ui.log.LogViewerFragment());
-            });
-        }
-
-        // 使用手册按钮
-        View btnHelp = view.findViewById(R.id.btnHelp);
-        if (btnHelp != null) {
-            btnHelp.setOnClickListener(v -> {
-                ((MainActivity) requireActivity()).navigateTo(new com.szyx.ai.ui.help.HelpFragment());
-            });
-        }
+            @Override
+            public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
+                int id = menuItem.getItemId();
+                if (id == R.id.action_log) {
+                    ((MainActivity) requireActivity()).navigateTo(new com.szyx.ai.ui.log.LogViewerFragment());
+                    return true;
+                } else if (id == R.id.action_help) {
+                    ((MainActivity) requireActivity()).navigateTo(new com.szyx.ai.ui.help.HelpFragment());
+                    return true;
+                } else if (id == R.id.action_settings) {
+                    ((MainActivity) requireActivity()).navigateTo(new com.szyx.ai.ui.settings.SettingsFragment());
+                    return true;
+                }
+                return false;
+            }
+        }, getViewLifecycleOwner(), Lifecycle.State.RESUMED);
 
         viewModel = new ViewModelProvider(this).get(CharacterViewModel.class);
         viewModel.getAllCharacters().observe(getViewLifecycleOwner(), characters -> {

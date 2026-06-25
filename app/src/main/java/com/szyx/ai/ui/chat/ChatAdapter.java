@@ -1,13 +1,20 @@
 package com.szyx.ai.ui.chat;
 
+import android.graphics.Color;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
@@ -25,11 +32,18 @@ public class ChatAdapter extends ListAdapter<MessageEntity, RecyclerView.ViewHol
     private static final int TYPE_SUMMARY = 2;
     private static final int TYPE_STREAMING = 3;
 
+    private static final Pattern CHOICE_PATTERN = Pattern.compile("【([^】]+?)】");
+
     public interface OnMessageActionListener {
         void onMessageLongClick(MessageEntity message);
     }
 
+    public interface OnChoiceClickListener {
+        void onChoiceClick(String choiceText);
+    }
+
     private OnMessageActionListener listener;
+    private OnChoiceClickListener choiceListener;
     private String streamingText = null;
     private String characterAvatarPath = null;
 
@@ -41,13 +55,14 @@ public class ChatAdapter extends ListAdapter<MessageEntity, RecyclerView.ViewHol
         this.listener = listener;
     }
 
+    public void setOnChoiceClickListener(OnChoiceClickListener listener) {
+        this.choiceListener = listener;
+    }
+
     public void setCharacterAvatarPath(String path) {
         this.characterAvatarPath = path;
     }
 
-    /**
-     * Show streaming text as a temporary assistant message at the end of the list.
-     */
     public void showStreamingText(String text) {
         int oldCount = getItemCount();
         this.streamingText = text;
@@ -59,9 +74,6 @@ public class ChatAdapter extends ListAdapter<MessageEntity, RecyclerView.ViewHol
         }
     }
 
-    /**
-     * Clear streaming text when generation completes.
-     */
     public void clearStreamingText() {
         int oldCount = getItemCount();
         this.streamingText = null;
@@ -125,26 +137,40 @@ public class ChatAdapter extends ListAdapter<MessageEntity, RecyclerView.ViewHol
             AssistantViewHolder avh = (AssistantViewHolder) holder;
             if (streamingText != null && position == super.getItemCount()) {
                 avh.messageText.setText(streamingText);
+                avh.choicesContainer.setVisibility(View.GONE);
+                avh.choicesContainer.removeAllViews();
             } else {
                 MessageEntity msg = getItem(position);
-                avh.messageText.setText(msg.content);
+                String content = msg.content;
+
+                List<String> choices = extractChoices(content);
+                if (!choices.isEmpty() && position == getLastAssistantPosition()) {
+                    String displayText = stripChoices(content);
+                    avh.messageText.setText(displayText);
+                    setupChoices(avh.choicesContainer, choices);
+                } else {
+                    avh.messageText.setText(content);
+                    avh.choicesContainer.setVisibility(View.GONE);
+                    avh.choicesContainer.removeAllViews();
+                }
             }
-            // Load character avatar
             if (characterAvatarPath != null && new File(characterAvatarPath).exists()) {
                 Glide.with(avh.avatarImage)
                         .load(characterAvatarPath)
+                        .placeholder(R.drawable.ic_default_avatar)
+                        .error(R.drawable.ic_default_avatar)
                         .circleCrop()
                         .into(avh.avatarImage);
-                avh.avatarImage.setVisibility(View.VISIBLE);
             } else {
-                avh.avatarImage.setVisibility(View.VISIBLE);
+                Glide.with(avh.avatarImage).clear(avh.avatarImage);
+                avh.avatarImage.setImageResource(R.drawable.ic_default_avatar);
             }
+            avh.avatarImage.setVisibility(View.VISIBLE);
         } else if (holder instanceof SummaryViewHolder) {
             MessageEntity msg = getItem(position);
             ((SummaryViewHolder) holder).messageText.setText(msg.content);
         }
 
-        // Long click for non-streaming items
         if (streamingText == null || position < super.getItemCount()) {
             holder.itemView.setOnLongClickListener(v -> {
                 if (listener != null && position < super.getItemCount()) {
@@ -152,6 +178,61 @@ public class ChatAdapter extends ListAdapter<MessageEntity, RecyclerView.ViewHol
                 }
                 return true;
             });
+        }
+    }
+
+    private int getLastAssistantPosition() {
+        for (int i = super.getItemCount() - 1; i >= 0; i--) {
+            if ("assistant".equals(getItem(i).role)) return i;
+        }
+        return -1;
+    }
+
+    private List<String> extractChoices(String text) {
+        List<String> choices = new ArrayList<>();
+        Matcher matcher = CHOICE_PATTERN.matcher(text);
+        while (matcher.find()) {
+            choices.add(matcher.group(1).trim());
+        }
+        return choices;
+    }
+
+    private String stripChoices(String text) {
+        return text.replaceAll("【[^】]+?】", "").trim();
+    }
+
+    private void setupChoices(LinearLayout container, List<String> choices) {
+        container.removeAllViews();
+        container.setVisibility(View.VISIBLE);
+
+        for (String choice : choices) {
+            TextView chip = new TextView(container.getContext());
+            chip.setText(choice);
+            chip.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
+            chip.setTextColor(Color.parseColor("#FF00E5FF"));
+            chip.setBackgroundResource(R.drawable.bg_choice_chip);
+            chip.setGravity(Gravity.CENTER);
+            int hPad = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 12,
+                    container.getContext().getResources().getDisplayMetrics());
+            int vPad = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8,
+                    container.getContext().getResources().getDisplayMetrics());
+            chip.setPadding(hPad, vPad, hPad, vPad);
+
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
+            int margin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 3,
+                    container.getContext().getResources().getDisplayMetrics());
+            lp.setMargins(0, margin, 0, margin);
+            chip.setLayoutParams(lp);
+
+            chip.setOnClickListener(v -> {
+                if (choiceListener != null) {
+                    choiceListener.onChoiceClick(choice);
+                }
+            });
+
+            container.addView(chip);
         }
     }
 
@@ -166,10 +247,12 @@ public class ChatAdapter extends ListAdapter<MessageEntity, RecyclerView.ViewHol
     static class AssistantViewHolder extends RecyclerView.ViewHolder {
         TextView messageText;
         ImageView avatarImage;
+        LinearLayout choicesContainer;
         AssistantViewHolder(View v) {
             super(v);
             messageText = v.findViewById(R.id.messageText);
             avatarImage = v.findViewById(R.id.avatarImage);
+            choicesContainer = v.findViewById(R.id.choicesContainer);
         }
     }
 

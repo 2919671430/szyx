@@ -57,8 +57,13 @@ public class CharacterAdapter extends ListAdapter<CharacterEntity, CharacterAdap
         if (character.avatarPath != null && new File(character.avatarPath).exists()) {
             Glide.with(holder.avatarImage)
                     .load(character.avatarPath)
+                    .placeholder(R.drawable.ic_default_avatar)
+                    .error(R.drawable.ic_default_avatar)
                     .circleCrop()
                     .into(holder.avatarImage);
+        } else {
+            Glide.with(holder.avatarImage).clear(holder.avatarImage);
+            holder.avatarImage.setImageResource(R.drawable.ic_default_avatar);
         }
 
         holder.itemView.setOnClickListener(v -> clickListener.onClick(character));

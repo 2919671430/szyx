@@ -121,12 +121,12 @@ public class ChatViewModel extends AndroidViewModel {
     }
 
     private static String getModelDisplayName(String modelCode) {
-        if (modelCode == null) return "小米";
+        if (modelCode == null) return "DeepSeek";
         switch (modelCode) {
             case "xiaomi": return "小米";
             case "deepseek": return "DeepSeek";
             case "custom": return "自定义";
-            default: return "小米";
+            default: return "DeepSeek";
         }
     }
 
@@ -293,6 +293,44 @@ public class ChatViewModel extends AndroidViewModel {
                 }
 
                 AppLog.i(TAG, "生成完成，结果长度: " + (result != null ? result.length() : 0));
+
+                // Format validation: check if choices are present, retry once if missing
+                if (character.forceOptionsEnabled && result != null && !result.isEmpty()) {
+                    boolean hasChoices = result.matches("(?s).*【.+?】.*");
+                    if (!hasChoices) {
+                        AppLog.i(TAG, "格式校验：未检测到选项标记，尝试重试一次");
+                        synchronized (streamingBuffer) {
+                            streamingBuffer.setLength(0);
+                            streamingText.postValue("格式优化中...");
+                        }
+                        List<InferenceEngine.Message> retryPrompt = new java.util.ArrayList<>(promptMessages);
+                        retryPrompt.add(new InferenceEngine.Message("system",
+                                "【紧急提醒】你的回复格式不符合要求！你必须在回复末尾用中文方括号【】提供2-4个剧情选项，每个选项一行。这是系统强制要求，不可省略。示例：\n【选项A的具体行动】\n【选项B的具体行动】\n【选项C的具体行动】"));
+                        try {
+                            String retryResult = engine.generate(retryPrompt, temperature, 512,
+                                    new StreamingCallback() {
+                                        @Override public boolean onToken(String token) {
+                                            synchronized (streamingBuffer) {
+                                                streamingBuffer.append(token);
+                                                streamingText.postValue(streamingBuffer.toString());
+                                            }
+                                            return true;
+                                        }
+                                        @Override public void onComplete(String fullText) {}
+                                        @Override public void onError(Exception e) {}
+                                    });
+                            if (retryResult != null && !retryResult.isEmpty()
+                                    && retryResult.matches("(?s).*【.+?】.*")) {
+                                result = retryResult;
+                                AppLog.i(TAG, "格式重试成功");
+                            } else {
+                                AppLog.i(TAG, "格式重试未改善，使用原始结果");
+                            }
+                        } catch (Exception e) {
+                            AppLog.w(TAG, "格式重试失败，使用原始结果: " + e.getMessage());
+                        }
+                    }
+                }
 
                 if (result != null && !result.isEmpty() && character.numericalEnabled) {
                     List<NumericalManager.NumChange> changes =

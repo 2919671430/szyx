@@ -200,6 +200,14 @@ public class ChatRepository {
         return ltmDao.getMemoryCount(sessionId);
     }
 
+    public void deleteLTM(LongTermMemoryEntity memory) {
+        executor.execute(() -> ltmDao.delete(memory));
+    }
+
+    public List<LongTermMemoryEntity> getLTMsByTag(long sessionId, String tag) {
+        return ltmDao.getMemoriesByTag(sessionId, tag);
+    }
+
     // ---- World Book ----
 
     public List<WorldBookEntity> getEnabledWorldBookEntries(long characterId) {

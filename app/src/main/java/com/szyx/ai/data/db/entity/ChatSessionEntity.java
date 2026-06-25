@@ -32,5 +32,5 @@ public class ChatSessionEntity {
 
     /** Model code: "local" for local LLM, "xiaomi" for Xiaomi API, etc. */
     @NonNull
-    public String modelCode = "xiaomi";
+    public String modelCode = "deepseek";
 }

@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:colorBackground">
+    android:background="@drawable/bg_cyber_gradient">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,19 +17,17 @@
             android:text="云端模型"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="?colorOnSurface"
+            android:textColor="@color/neon_cyan"
             android:layout_marginBottom="16dp" />
 
-        <!-- Xiaomi API Toggle -->
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switchXiaomiApi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="启用小米模型 API (mimo-v2.5)"
-            android:textColor="?colorOnSurface"
+            android:textColor="@color/on_surface"
             android:layout_marginBottom="8dp" />
 
-        <!-- API Key -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,20 +46,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="关闭：未启用"
-            android:textColor="?colorOnSurfaceVariant"
+            android:textColor="@color/on_surface_variant"
             android:textSize="12sp"
             android:layout_marginBottom="16dp" />
 
-        <!-- DeepSeek API Toggle -->
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switchDeepSeekApi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="启用 DeepSeek API (V4 Flash)"
-            android:textColor="?colorOnSurface"
+            android:textColor="@color/on_surface"
             android:layout_marginBottom="8dp" />
 
-        <!-- DeepSeek API Key -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,20 +76,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="关闭：未启用 DeepSeek"
-            android:textColor="?colorOnSurfaceVariant"
+            android:textColor="@color/on_surface_variant"
             android:textSize="12sp"
             android:layout_marginBottom="16dp" />
 
-        <!-- Custom API Toggle -->
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switchCustomApi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="启用自定义模型 API (OpenAI 兼容)"
-            android:textColor="?colorOnSurface"
+            android:textColor="@color/on_surface"
             android:layout_marginBottom="8dp" />
 
-        <!-- Custom API URL -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -107,7 +101,6 @@
                 android:inputType="textUri" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Custom Model Name -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -121,7 +114,6 @@
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Custom API Key -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -140,7 +132,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="关闭：未启用自定义模型"
-            android:textColor="?colorOnSurfaceVariant"
+            android:textColor="@color/on_surface_variant"
             android:textSize="12sp"
             android:layout_marginBottom="16dp" />
 
@@ -156,23 +148,22 @@
             android:text="推理设置"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="?colorOnSurface"
+            android:textColor="@color/neon_cyan"
             android:layout_marginBottom="8dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="上下文大小和 CPU 线程数仅对本地模型生效"
-            android:textColor="?colorOnSurfaceVariant"
+            android:textColor="@color/on_surface_variant"
             android:textSize="12sp"
             android:layout_marginBottom="12dp" />
 
-        <!-- Context Size -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="上下文大小"
-            android:textColor="?colorOnSurfaceVariant"
+            android:textColor="@color/on_surface_variant"
             android:layout_marginBottom="4dp" />
         <com.google.android.material.slider.Slider
             android:id="@+id/sliderCtxSize"
@@ -188,16 +179,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4096"
-            android:textColor="?colorOnSurface"
+            android:textColor="@color/on_surface"
             android:layout_marginBottom="16dp" />
 
-        <!-- CPU Threads -->
         <TextView
             android:id="@+id/textCpuInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CPU 线程数"
-            android:textColor="?colorOnSurfaceVariant"
+            android:textColor="@color/on_surface_variant"
             android:layout_marginBottom="4dp" />
         <com.google.android.material.slider.Slider
             android:id="@+id/sliderThreads"
@@ -213,15 +203,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4"
-            android:textColor="?colorOnSurface"
+            android:textColor="@color/on_surface"
             android:layout_marginBottom="16dp" />
 
-        <!-- Temperature -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="温度"
-            android:textColor="?colorOnSurfaceVariant"
+            android:textColor="@color/on_surface_variant"
             android:layout_marginBottom="4dp" />
         <com.google.android.material.slider.Slider
             android:id="@+id/sliderTemperature"
@@ -237,15 +226,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0.7"
-            android:textColor="?colorOnSurface"
+            android:textColor="@color/on_surface"
             android:layout_marginBottom="16dp" />
 
-        <!-- Save -->
         <Button
             android:id="@+id/btnSaveSettings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="保存设置"
+            android:backgroundTint="@color/neon_purple"
+            android:textColor="@color/on_primary"
             style="@style/Widget.Material3.Button" />
 
         <View
@@ -259,7 +249,7 @@
             android:id="@+id/textDeviceInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="?colorOnSurfaceVariant"
+            android:textColor="@color/on_surface_variant"
             android:textSize="12sp"
             android:gravity="center"
             android:layout_gravity="center"
@@ -269,7 +259,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SZYX AI v1.0.0\n云端 AI 聊天"
-            android:textColor="?colorOnSurfaceVariant"
+            android:textColor="@color/on_surface_variant"
             android:textSize="12sp"
             android:gravity="center"
             android:layout_gravity="center" />

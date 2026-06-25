@@ -121,18 +121,28 @@ public class LayeredPromptBuilder {
         sb.append("1. 始终保持角色身份，不要跳出角色或承认自己是AI\n");
         sb.append("2. 根据角色的性格和设定进行回复，保持人设一致性\n");
         sb.append("3. 回复应自然流畅，符合角色的语气和风格\n");
-        sb.append("4. 在回复的末尾，为用户提供2-4个剧情发展方向的选项，用【】标注，例如：\n");
-        sb.append("   【跟随她前往森林深处】\n");
-        sb.append("   【先回村子准备物资】\n");
-        sb.append("   【询问她关于宝藏的更多信息】\n");
+
+        if (character.forceOptionsEnabled) {
+            sb.append("\n【强制格式要求 - 最高优先级】你的每次回复必须以2-4个剧情选项结尾，这是系统硬性规定，无论任何情况都不可省略。\n");
+            sb.append("选项格式规则：\n");
+            sb.append("- 每个选项必须用中文方括号【】包裹\n");
+            sb.append("- 每个选项独占一行\n");
+            sb.append("- 选项内容必须是具体的剧情行动方向，不能是笼统的描述\n");
+            sb.append("- 最后一行除了选项外不要写其他内容\n");
+            sb.append("正确示例：\n");
+            sb.append("【跟她走进那扇门】\n");
+            sb.append("【先检查一下背包里的物品】\n");
+            sb.append("【大声呼喊看有没有人回应】\n");
+            sb.append("【拒绝她的邀请，转身离开】\n");
+        }
 
         if (character.constraintLevel >= 1) {
-            sb.append("5. 不要擅自改变剧情走向，除非用户明确引导\n");
-            sb.append("6. 保持世界观的一致性，不要引入矛盾设定\n");
+            sb.append("4. 不要擅自改变剧情走向，除非用户明确引导\n");
+            sb.append("5. 保持世界观的一致性，不要引入矛盾设定\n");
         }
         if (character.constraintLevel >= 2) {
-            sb.append("7. 严格按照角色设定行动，不要添加未定义的能力或背景\n");
-            sb.append("8. 对于数值变化，严格按照规则执行\n");
+            sb.append("6. 严格按照角色设定行动，不要添加未定义的能力或背景\n");
+            sb.append("7. 对于数值变化，严格按照规则执行\n");
         }
 
         if (character.outputStyle != null && !character.outputStyle.isEmpty()) {

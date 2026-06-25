@@ -50,7 +50,7 @@ public class CharacterEditFragment extends Fragment {
             editSupremeDirective;
     private Slider sliderConstraint, sliderSTMRounds;
     private TextView textConstraint, textSTMRounds;
-    private SwitchMaterial switchLTM, switchWorldBook, switchNumerical;
+    private SwitchMaterial switchLTM, switchWorldBook, switchNumerical, switchForceOptions;
 
     private EditText editWorldBookInput, editWorldBookPriority;
     private TextView textWorldBookCount;
@@ -99,6 +99,7 @@ public class CharacterEditFragment extends Fragment {
         switchLTM = view.findViewById(R.id.switchLTM);
         switchWorldBook = view.findViewById(R.id.switchWorldBook);
         switchNumerical = view.findViewById(R.id.switchNumerical);
+        switchForceOptions = view.findViewById(R.id.switchForceOptions);
 
         // World book management
         chatRepo = new ChatRepository(requireActivity().getApplication());
@@ -199,6 +200,7 @@ public class CharacterEditFragment extends Fragment {
         switchLTM.setChecked(c.ltmEnabled);
         switchWorldBook.setChecked(c.worldBookEnabled);
         switchNumerical.setChecked(c.numericalEnabled);
+        switchForceOptions.setChecked(c.forceOptionsEnabled);
     }
 
     private void saveCharacter() {
@@ -226,6 +228,7 @@ public class CharacterEditFragment extends Fragment {
         character.ltmEnabled = switchLTM.isChecked();
         character.worldBookEnabled = switchWorldBook.isChecked();
         character.numericalEnabled = switchNumerical.isChecked();
+        character.forceOptionsEnabled = switchForceOptions.isChecked();
         character.updatedAt = System.currentTimeMillis();
         if (avatarPath != null) {
             character.avatarPath = avatarPath;
@@ -268,7 +271,12 @@ public class CharacterEditFragment extends Fragment {
         android.content.ClipboardManager clipboard =
                 (android.content.ClipboardManager) requireContext().getSystemService(android.content.Context.CLIPBOARD_SERVICE);
         if (clipboard.hasPrimaryClip() && clipboard.getPrimaryClip() != null) {
-            String json = clipboard.getPrimaryClip().getItemAt(0).getText().toString();
+            CharSequence clipText = clipboard.getPrimaryClip().getItemAt(0).getText();
+            if (clipText == null || clipText.toString().trim().isEmpty()) {
+                Toast.makeText(requireContext(), "剪贴板为空或非文本内容", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            String json = clipText.toString();
             try {
                 CharacterEntity imported = JsonUtils.importCharacter(json);
                 editName.setText(imported.name);
@@ -501,7 +509,12 @@ public class CharacterEditFragment extends Fragment {
             Toast.makeText(requireContext(), "剪贴板为空", Toast.LENGTH_SHORT).show();
             return;
         }
-        String json = clipboard.getPrimaryClip().getItemAt(0).getText().toString();
+        CharSequence clipText = clipboard.getPrimaryClip().getItemAt(0).getText();
+        if (clipText == null || clipText.toString().trim().isEmpty()) {
+            Toast.makeText(requireContext(), "剪贴板为空或非文本内容", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String json = clipText.toString();
         executor.execute(() -> {
             try {
                 org.json.JSONArray arr = new org.json.JSONArray(json);

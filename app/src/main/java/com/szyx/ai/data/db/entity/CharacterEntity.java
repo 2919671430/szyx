@@ -50,4 +50,7 @@ public class CharacterEntity {
 
     /** Supreme directive - injected before every user message to enforce writing rules */
     public String supremeDirective;
+
+    /** Whether force-options generation is enabled */
+    public boolean forceOptionsEnabled = true;
 }

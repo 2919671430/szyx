@@ -37,3 +37,9 @@ app/.cxx/
 
 # Embedded git repos
 llama.cpp/llama_cpp_new/
+
+# MiMoCode
+.mimocode/
+
+# Windows nul device
+nul

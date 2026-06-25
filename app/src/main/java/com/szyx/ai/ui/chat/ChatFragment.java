@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -33,7 +32,7 @@ public class ChatFragment extends Fragment {
     private ChatViewModel viewModel;
     private ChatAdapter adapter;
     private EditText messageInput;
-    private ImageButton btnSend;
+    private ImageView btnSend;
     private LinearLayout typingIndicator;
     private RecyclerView recyclerView;
     private TextView textModelIndicator;
@@ -72,6 +71,11 @@ public class ChatFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         adapter = new ChatAdapter();
+        adapter.setOnChoiceClickListener(choiceText -> {
+            messageInput.setText("");
+            adapter.clearStreamingText();
+            viewModel.sendMessage(choiceText);
+        });
         adapter.setOnMessageActionListener(new ChatAdapter.OnMessageActionListener() {
             @Override
             public void onMessageLongClick(MessageEntity message) {
